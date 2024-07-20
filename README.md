@@ -1,2 +1,3 @@
-# the-barber-shop
-The barber shop
+# The barber shop
+
+In development...
