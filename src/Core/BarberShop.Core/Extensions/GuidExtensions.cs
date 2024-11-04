@@ -3,16 +3,16 @@
 /// <summary>
 /// Defines extensions for <see cref="Guid"/>
 /// </summary>
-public static class GuidExtensionsTests
+public static class GuidExtensions
 {
     /// <summary>
     /// Validates if the specified guid is a null reference or empty.
     /// </summary>
     /// <param name="value">The value to be validated.</param>
     /// <returns>True if is null or empty, otherwise returns false.</returns>
-    public static bool IsNullOrEmpty(this Guid? value)
+    public static bool IsNullOrEmpty([NotNullWhen(false)]this Guid? value)
     {
-        return value.IsNull() || value == Guid.Empty;
+        return value == null || value == Guid.Empty;
     }
 
     /// <summary>

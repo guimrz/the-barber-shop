@@ -17,7 +17,7 @@ public class CollectionExtensionsTests
     [Fact]
     public void IsNullOrEmpty_WithEmptyCollection_ReturnsTrue()
     {
-        IEnumerable<object>? sut = Enumerable.Empty<object>();
+        IEnumerable<object>? sut = [];
 
         bool actual = sut.IsNullOrEmpty();
 
