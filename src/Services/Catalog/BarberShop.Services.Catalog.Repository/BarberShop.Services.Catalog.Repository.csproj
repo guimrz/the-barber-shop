@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\BarberShop.Core.Repository.EntityFramework\BarberShop.Core.Repository.EntityFramework.csproj" />
+    <ProjectReference Include="..\BarberShop.Services.Catalog.Domain\BarberShop.Services.Catalog.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

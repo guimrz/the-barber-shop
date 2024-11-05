@@ -1,5 +1,5 @@
 
-namespace BarberShop.Services.Products.Api
+namespace BarberShop.Services.Customers.Api
 {
     public class Program
     {

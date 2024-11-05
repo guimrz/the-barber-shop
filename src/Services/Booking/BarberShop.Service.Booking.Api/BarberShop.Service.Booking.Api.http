@@ -1,6 +1,0 @@
-@BarberShop.Service.Booking.Api_HostAddress = http://localhost:5038
-
-GET {{BarberShop.Service.Booking.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

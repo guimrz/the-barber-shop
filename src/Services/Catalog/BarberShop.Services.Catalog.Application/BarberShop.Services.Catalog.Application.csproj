@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BarberShop.Services.Catalog.Domain\BarberShop.Services.Catalog.Domain.csproj" />
+    <ProjectReference Include="..\BarberShop.Services.Catalog.Repository\BarberShop.Services.Catalog.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
