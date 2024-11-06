@@ -1,4 +1,5 @@
-﻿using BarberShop.Services.Catalog.Application.Objects.Responses;
+﻿using AutoMapper;
+using BarberShop.Services.Catalog.Application.Responses;
 using BarberShop.Services.Catalog.Domain;
 
 namespace BarberShop.Services.Catalog.Application.Mapping

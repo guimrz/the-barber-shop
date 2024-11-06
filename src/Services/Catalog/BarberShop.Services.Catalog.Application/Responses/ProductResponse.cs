@@ -1,4 +1,4 @@
-﻿namespace BarberShop.Services.Catalog.Application.Objects.Responses
+﻿namespace BarberShop.Services.Catalog.Application.Responses
 {
     public class ProductResponse
     {

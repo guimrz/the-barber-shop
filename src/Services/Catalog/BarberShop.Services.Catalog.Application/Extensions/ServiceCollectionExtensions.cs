@@ -1,6 +1,8 @@
-﻿using BarberShop.Services.Catalog.Application.Mapping;
+﻿using BarberShop.Core.Mediator.Extensions;
+using BarberShop.Services.Catalog.Application.Mapping;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Reflection;
 
 namespace BarberShop.Services.Catalog.Application.Extensions
 {
@@ -13,13 +15,20 @@ namespace BarberShop.Services.Catalog.Application.Extensions
         {
             ArgumentNullException.ThrowIfNull(services);
 
-            services.TryAddScoped<ICatalogService, CatalogService>();
+            // Configure the mediator.
+            services.AddMediator(config =>
+            {
+                config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
             // Configure the auto mapper.
             services.AddAutoMapper(config =>
             {
                 config.AddProfile<ProductMapProfile>();
             });
+
+            // Registers the validators defined in this assembly.
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }
