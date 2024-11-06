@@ -20,6 +20,8 @@ namespace BarberShop.Services.Catalog.Repository
 
         public IQueryable<Product> Products => _dbContext.Set<Product>();
 
+        public IQueryable<ProductType> ProductTypes => _dbContext.Set<ProductType>();
+
         public async Task<Product> InsertAsync(Product product, CancellationToken cancellationToken = default)
         {
             EntityEntry<Product> entry = await _dbContext.AddAsync(product, cancellationToken);

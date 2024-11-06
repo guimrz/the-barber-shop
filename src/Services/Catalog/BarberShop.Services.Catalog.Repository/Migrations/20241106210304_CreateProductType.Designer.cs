@@ -4,6 +4,7 @@ using BarberShop.Services.Catalog.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BarberShop.Services.Products.Repository.Migrations
 {
     [DbContext(typeof(CatalogServiceDbContext))]
-    partial class ProductsServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241106210304_CreateProductType")]
+    partial class CreateProductType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

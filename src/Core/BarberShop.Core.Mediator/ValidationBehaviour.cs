@@ -1,18 +1,16 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using MediatR;
 
 namespace BarberShop.Core.Mediator
 {
-    public sealed class ValidationBehavior<TRequest, TResponse>
-        : IPipelineBehavior<TRequest, TResponse>
+    public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IBaseRequest
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
         public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
-            _validators = validators;
+            _validators = validators ?? Enumerable.Empty<IValidator<TRequest>>();
         }
 
         public async Task<TResponse> Handle(
@@ -27,11 +25,7 @@ namespace BarberShop.Core.Mediator
 
             var errors = validationFailures
                 .Where(validationResult => !validationResult.IsValid)
-                .SelectMany(validationResult => validationResult.Errors)
-                .Select(validationFailure => new ValidationFailure(
-                    validationFailure.PropertyName,
-                    validationFailure.ErrorMessage))
-                .ToList();
+                .SelectMany(validationResult => validationResult.Errors);
 
             if (errors.Any())
             {

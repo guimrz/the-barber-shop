@@ -1,5 +1,6 @@
 using BarberShop.Services.Catalog.Application.Extensions;
 using BarberShop.Services.Catalog.Repository.Extensions;
+using NSwag;
 
 namespace BarberShop.Services.Catalog.Api
 {
@@ -15,21 +16,38 @@ namespace BarberShop.Services.Catalog.Api
                 ?? throw new InvalidOperationException("Could not retrieve the connection string."));
 
             builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddOpenApiDocument(options =>
+            {
+                options.PostProcess = document =>
+                {
+                    document.Info = new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "Catalog API"
+                    };
+                };
+            });
+
+            builder.Services.AddHealthChecks();
 
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseOpenApi();
+                app.UseSwaggerUi();
+                app.UseReDoc(options =>
+                {
+                    options.DocumentTitle = "Catalog API Documentation";
+                    options.Path = "/docs";
+                });
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
+            app.UseHealthChecks("/health");
 
             app.MapControllers();
 
