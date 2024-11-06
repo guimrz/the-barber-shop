@@ -6,6 +6,8 @@ namespace BarberShop.Services.Catalog.Repository
     {
         IQueryable<Product> Products { get; }
 
+        IQueryable<ProductType> ProductTypes { get; }
+
         Task<Product> InsertAsync(Product product, CancellationToken cancellationToken = default);
 
         Task SaveChangesAsync(CancellationToken cancellationToken = default);

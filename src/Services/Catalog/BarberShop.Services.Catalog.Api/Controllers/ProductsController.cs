@@ -20,6 +20,12 @@ namespace BarberShop.Services.Catalog.Api.Controllers
             _mediator = mediator;
         }
  
+        /// <summary>
+        /// Get the products.
+        /// </summary>
+        /// <param name="query">The query arguments.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The collection of products.</returns>
         [HttpGet]
         [ProducesResponseType<ProductResponse[]>((int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetProductsAsync(GetProductsQuery query, CancellationToken cancellationToken = default)
@@ -29,6 +35,12 @@ namespace BarberShop.Services.Catalog.Api.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+        /// Get the product details.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The details of the specified product.</returns>
         [HttpGet("{productId:guid}")]
         [ProducesResponseType<ProductResponse>((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -46,6 +58,12 @@ namespace BarberShop.Services.Catalog.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Create a new product.
+        /// </summary>
+        /// <param name="request">The product information.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The product created.</returns>
         [HttpPost]
         [ProducesResponseType<ProductResponse>((int)HttpStatusCode.Created)]
         public async Task<IActionResult> CreateProductAsync([FromBody] CreateProductCommand request, CancellationToken cancellationToken = default)
