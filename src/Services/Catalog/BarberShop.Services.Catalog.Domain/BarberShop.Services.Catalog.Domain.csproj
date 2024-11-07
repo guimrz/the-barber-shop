@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\BarberShop.Core.Repository\BarberShop.Core.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

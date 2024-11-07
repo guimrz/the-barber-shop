@@ -1,9 +1,9 @@
-﻿namespace BarberShop.Services.Catalog.Domain
-{
-    public class ProductType
-    {
-        public int Id { get; set; }
+﻿using BarberShop.Core.Repository;
 
+namespace BarberShop.Services.Catalog.Domain
+{
+    public class ProductType : EntityBase<int>
+    {
         public string Name { get; set; }
 
         public string? Description { get; set; }

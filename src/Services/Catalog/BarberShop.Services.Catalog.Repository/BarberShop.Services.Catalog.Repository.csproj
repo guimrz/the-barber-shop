@@ -11,8 +11,4 @@
     <ProjectReference Include="..\BarberShop.Services.Catalog.Domain\BarberShop.Services.Catalog.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>

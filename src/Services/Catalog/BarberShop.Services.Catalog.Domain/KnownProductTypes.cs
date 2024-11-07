@@ -6,6 +6,6 @@
 
         public static ProductType Booking = new ProductType(2, "Booking", "A booking to an execution of a service.");
 
-        public static ProductType Subscription = new ProductType(3, "Booking", "A subscription to a service.");
+        public static ProductType Subscription = new ProductType(3, "Subscription", "A subscription to a service.");
     }
 }

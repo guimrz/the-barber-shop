@@ -7,10 +7,10 @@ namespace BarberShop.Services.Catalog.Application.Queries
         public GetProductsQueryValidator()
         {
             RuleFor(p => p.Page)
-                .GreaterThan(1);
+                .GreaterThanOrEqualTo(1);
 
             RuleFor(p => p.PageSize)
-                .GreaterThan(1);
+                .GreaterThanOrEqualTo(1);
         }
     }
 }

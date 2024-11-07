@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BarberShop.Core.Repository.EntityFramework.Interceptors;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BarberShop.Core.Repository.EntityFramework.Extensions
@@ -20,8 +22,10 @@ namespace BarberShop.Core.Repository.EntityFramework.Extensions
             ArgumentNullException.ThrowIfNull(services);
             ArgumentException.ThrowIfNullOrWhiteSpace(connectionString);
 
-            services.AddDbContext<TContext>(options =>
+            services.AddScoped<ISaveChangesInterceptor, DomainEventsInterceptor>();
+            services.AddDbContext<TContext>((serviceProvider, options) =>
             {
+                options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
                 options.UseSqlServer(connectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(15), errorNumbersToAdd: null);
