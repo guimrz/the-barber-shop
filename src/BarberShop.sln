@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 17
+# Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}"
@@ -47,6 +47,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberShop.Services.Catalog.Repository", "Services\Catalog\BarberShop.Services.Catalog.Repository\BarberShop.Services.Catalog.Repository.csproj", "{29AB8571-B698-44E1-A3D0-B77B217463C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberShop.Core.Mediator", "Core\BarberShop.Core.Mediator\BarberShop.Core.Mediator.csproj", "{1C1E12C9-33B1-41CB-9134-AFBFFCCC2BD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{7E5575EE-9040-4230-8DDC-E36511B64690}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backoffice", "Backoffice", "{D43AEABF-4DA9-4FEF-A080-BBE6DDE6B81C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -136,6 +140,7 @@ Global
 		{9E19CC43-F51E-4040-B2BB-AACACEBF36D8} = {7194EF4E-AFE6-2DFA-FE16-1DE530D439F2}
 		{29AB8571-B698-44E1-A3D0-B77B217463C5} = {7194EF4E-AFE6-2DFA-FE16-1DE530D439F2}
 		{1C1E12C9-33B1-41CB-9134-AFBFFCCC2BD4} = {FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}
+		{D43AEABF-4DA9-4FEF-A080-BBE6DDE6B81C} = {7E5575EE-9040-4230-8DDC-E36511B64690}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBF644F9-DDCF-482C-BC97-5D8F827B1CFC}

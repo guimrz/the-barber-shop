@@ -4,23 +4,20 @@ using BarberShop.Services.Catalog.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BarberShop.Services.Products.Repository.Migrations
+namespace BarberShop.Services.Catalog.Repository.Migrations
 {
     [DbContext(typeof(CatalogServiceDbContext))]
-    [Migration("20241106210304_CreateProductType")]
-    partial class CreateProductType
+    partial class CatalogServiceDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -79,7 +76,7 @@ namespace BarberShop.Services.Products.Repository.Migrations
                         {
                             Id = 3,
                             Description = "A subscription to a service.",
-                            Name = "Booking"
+                            Name = "Subscription"
                         });
                 });
 #pragma warning restore 612, 618
