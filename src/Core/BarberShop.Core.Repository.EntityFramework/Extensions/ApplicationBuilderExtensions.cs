@@ -18,7 +18,7 @@ namespace BarberShop.Core.Repository.EntityFramework.Extensions
         public static async Task<IApplicationBuilder> MigrateDatabaseAsync<TContext>(this IApplicationBuilder applicationBuilder)
             where TContext : DbContext
         {
-            ArgumentNullException.ThrowIfNull(nameof(applicationBuilder));
+            ArgumentNullException.ThrowIfNull(applicationBuilder);
 
             using var scope = applicationBuilder.ApplicationServices.CreateScope();
             using var context = scope.ServiceProvider.GetRequiredService<TContext>();

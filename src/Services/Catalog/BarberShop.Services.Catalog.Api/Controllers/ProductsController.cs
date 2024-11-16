@@ -8,11 +8,18 @@ using System.Net;
 
 namespace BarberShop.Services.Catalog.Api.Controllers
 {
+    /// <summary>
+    /// Defines a controller for products management.
+    /// </summary>
     [Route("products")]
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="ProductsController"/>
+        /// </summary>
+        /// <param name="mediator"></param>
         public ProductsController(IMediator mediator)
         {
             ArgumentNullException.ThrowIfNull(mediator);
