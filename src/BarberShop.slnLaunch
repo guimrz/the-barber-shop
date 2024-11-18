@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Backoffice",
+    "Projects": [
+      {
+        "Path": "Services\\Catalog\\BarberShop.Services.Catalog.Api\\BarberShop.Services.Catalog.Api.csproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "Apps\\Backoffice\\BarberShop.Apps.Backoffice\\BarberShop.Apps.Backoffice.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      }
+    ]
+  }
+]
