@@ -1,5 +1,4 @@
-﻿using BarberShop.Services.Catalog.Application;
-using BarberShop.Services.Catalog.Application.Commands;
+﻿using BarberShop.Services.Catalog.Application.Commands;
 using BarberShop.Services.Catalog.Application.Queries;
 using BarberShop.Services.Catalog.Application.Responses;
 using MediatR;
@@ -19,14 +18,14 @@ namespace BarberShop.Services.Catalog.Api.Controllers
         /// <summary>
         /// Creates a new instance of <see cref="ProductsController"/>
         /// </summary>
-        /// <param name="mediator"></param>
+        /// <param name="mediator">The mediator.</param>
         public ProductsController(IMediator mediator)
         {
             ArgumentNullException.ThrowIfNull(mediator);
 
             _mediator = mediator;
         }
- 
+
         /// <summary>
         /// Get the products.
         /// </summary>

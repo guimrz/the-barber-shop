@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BarberShop.Services.Catalog.Repository.Migrations
 {
     [DbContext(typeof(CatalogServiceDbContext))]
-    [Migration("20241116114117_InitialCreate")]
+    [Migration("20241116142208_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace BarberShop.Services.Catalog.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BarberShop.Services.Catalog.Domain.Product", b =>
+            modelBuilder.Entity("BarberShop.Services.Catalog.Domain.Brand", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,6 +40,38 @@ namespace BarberShop.Services.Catalog.Repository.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.HasKey("Id");
+
+                    b.ToTable("Brands", (string)null);
+                });
+
+            modelBuilder.Entity("BarberShop.Services.Catalog.Domain.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ProductTypeId");
 
                     b.ToTable("Products", (string)null);
                 });
@@ -81,6 +113,25 @@ namespace BarberShop.Services.Catalog.Repository.Migrations
                             Description = "A subscription to a service.",
                             Name = "Subscription"
                         });
+                });
+
+            modelBuilder.Entity("BarberShop.Services.Catalog.Domain.Product", b =>
+                {
+                    b.HasOne("BarberShop.Services.Catalog.Domain.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BarberShop.Services.Catalog.Domain.ProductType", "Type")
+                        .WithMany()
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Type");
                 });
 #pragma warning restore 612, 618
         }

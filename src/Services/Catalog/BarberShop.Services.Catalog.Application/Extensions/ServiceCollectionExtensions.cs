@@ -26,6 +26,7 @@ namespace BarberShop.Services.Catalog.Application.Extensions
             {
                 config.AddProfile<ProductMapProfile>();
                 config.AddProfile<ProductTypeMapProfile>();
+                config.AddProfile<BrandMapProfile>();
             });
 
             // Registers the validators defined in this assembly.

@@ -5,11 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BarberShop.Services.Catalog.Api.Controllers
 {
+    /// <summary>
+    /// Defines a controller for product types management.
+    /// </summary>
     [Route("product-types")]
     public class ProductTypesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="ProductTypesController"/>.
+        /// </summary>
+        /// <param name="mediator">The mediator.</param>
         public ProductTypesController(IMediator mediator)
         {
             ArgumentNullException.ThrowIfNull(mediator);

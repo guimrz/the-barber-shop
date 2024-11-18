@@ -2,6 +2,7 @@
 using BarberShop.Services.Catalog.Domain;
 using BarberShop.Services.Catalog.Repository;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace BarberShop.Services.Catalog.Application.Commands
@@ -27,7 +28,21 @@ namespace BarberShop.Services.Catalog.Application.Commands
         {
             ArgumentNullException.ThrowIfNull(request);
 
-            Product product = new Product(request.Name, request.Description);
+            Brand? brand = await _repository.Brands.SingleOrDefaultAsync(brand => brand.Id == request.BrandId, cancellationToken);
+
+            if (brand is null)
+            {
+                throw new InvalidOperationException($"The specified brand with id '{request.BrandId}' could not be found.");
+            }
+
+            ProductType? productType = await _repository.ProductTypes.SingleOrDefaultAsync(productType => productType.Id == request.TypeId, cancellationToken);
+
+            if (productType is null)
+            {
+                throw new InvalidOperationException($"The specified product type with id '{request.TypeId}' could not be found.");
+            }
+
+            Product product = new Product(request.Name, request.Description, request.Price, brand, productType);
 
             product = await _repository.InsertAsync(product, cancellationToken);
 

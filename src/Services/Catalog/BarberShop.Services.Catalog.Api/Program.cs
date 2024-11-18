@@ -4,8 +4,12 @@ using NSwag;
 
 namespace BarberShop.Services.Catalog.Api
 {
-    public class Program
+    class Program
     {
+        /// <summary>
+        /// Application entry point.
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +26,6 @@ namespace BarberShop.Services.Catalog.Api
                 {
                     document.Info = new OpenApiInfo
                     {
-                        Version = "v1",
                         Title = "Catalog API"
                     };
                 };
@@ -35,7 +38,6 @@ namespace BarberShop.Services.Catalog.Api
             if (app.Environment.IsDevelopment())
             {
                 app.UseOpenApi();
-                app.UseSwaggerUi();
                 app.UseReDoc(options =>
                 {
                     options.DocumentTitle = "Catalog API Documentation";
