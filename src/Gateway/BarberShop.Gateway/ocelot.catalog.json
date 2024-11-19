@@ -1,0 +1,65 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/brands",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog_api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/brands",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/product-types",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog_api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/product-types",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/products",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog_api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/products",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/products/{productId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog_api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/products/{productId}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Put",
+        "Delete"
+      ]
+    }
+  ]
+}
