@@ -1,15 +1,17 @@
-﻿@model IEnumerable<BarberShop.Apps.Backoffice.Services.Catalog.Objects.Responses.BrandResponse>
+﻿@model IEnumerable<BarberShop.Apps.Backoffice.Models.Brands.BrandViewModel>
 
 @{
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+<h1 class="display-6">Brands</h1>
+<hr />
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped">
+    <caption>List of brands</caption>
     <thead>
         <tr>
             <th>
@@ -25,23 +27,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { brandId = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { brandId = item.Id })
+                    @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

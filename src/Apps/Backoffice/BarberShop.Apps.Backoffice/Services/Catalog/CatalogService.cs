@@ -34,9 +34,32 @@ namespace BarberShop.Apps.Backoffice.Services.Catalog
 
             response.EnsureSuccessStatusCode();
 
-            using Stream responseStream = await response.Content.ReadAsStreamAsync(cancellationToken);
-
             return JsonConvert.DeserializeObject<BrandResponse>(await response.Content.ReadAsStringAsync())!;
+        }
+
+        public async Task<BrandResponse> GetBrandAsync(Guid brandId, CancellationToken cancellationToken = default)
+        {
+            var client = _httpClientFactory.CreateClient(nameof(CatalogService));
+
+            var response = await client.GetAsync($"/brands/{brandId}", cancellationToken);
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync(cancellationToken);
+
+            return JsonConvert.DeserializeObject<BrandResponse>(result)!;
+        }
+
+        public async Task<IEnumerable<ProductTypeResponse>> GetProductTypesAsync(CancellationToken cancellationToken = default)
+        {
+            var client = _httpClientFactory.CreateClient(nameof(CatalogService));
+
+            var response = await client.GetAsync("/product-types", cancellationToken);
+
+            response.EnsureSuccessStatusCode();
+
+            return JsonConvert.DeserializeObject<IEnumerable<ProductTypeResponse>>(await response.Content.ReadAsStringAsync(cancellationToken)) ?? Array.Empty<ProductTypeResponse>();
+
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model BarberShop.Apps.Backoffice.Models.Brands.BrandDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="display-6">@Model.Name</h1>
+<small class="text-body-secondary">@Model.Id</small>
+<hr/>
+
+<div>
+    <p>
+        @Model.Description
+    </p>
+</div>
+<div>
+    <a asp-action="List">Back to List</a>
+</div>

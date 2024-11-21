@@ -21,7 +21,12 @@ namespace BarberShop.Apps.Backoffice.Controllers
         {
             var brands = await _catalogService.GetBrandsAsync(cancellationToken);
 
-            return View(brands.ToList());
+            return View(brands.Select(brand => new BrandViewModel
+            {
+                Description = brand.Description,
+                Name = brand.Name,
+                Id = brand.Id
+            }));
         }
 
         [HttpGet]
@@ -41,6 +46,38 @@ namespace BarberShop.Apps.Backoffice.Controllers
             await _catalogService.CreateBrandAsync(new CreateBrandRequest { Name = brand.Name, Description = brand.Description });
 
             return RedirectToAction(nameof(List));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid brandId)
+        {
+            var brand = await _catalogService.GetBrandAsync(brandId);
+
+            var viewModel = new BrandDetailsViewModel
+            {
+                Id = brand.Id,
+                Name = brand.Name,
+                Description = brand.Description,
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateProduct(Guid brandId)
+        {
+            CreateBrandProductViewModel viewModel = new CreateBrandProductViewModel();
+
+            viewModel.BrandId = brandId;
+            viewModel.ProductTypes = (await _catalogService.GetProductTypesAsync())
+                .Select(productType => new Models.ProductTypes.ProductTypeViewModel
+                {
+                    Description = productType.Description,
+                    Name = productType.Name,
+                    Id = productType.Id
+                });
+
+            return View(viewModel);
         }
     }
 }

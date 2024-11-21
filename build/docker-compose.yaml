@@ -11,6 +11,22 @@ services:
             - '1433'
         ports:
             - "60099:1433"     
+    
+    backoffice:
+        image: backoffice:latest
+        container_name: backoffice
+        build:
+            context: ../src/
+            dockerfile: Apps/Backoffice/BarberShop.Apps.Backoffice/Dockerfile
+        networks:
+            - applications_network
+        expose:
+            - 8080
+        ports:
+            - "60000:8080"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=$aspnetcore_environment
+            - Gateway__BaseUrl=http://gateway:8080
       
     gateway:
         image: gateway:latest
@@ -20,6 +36,7 @@ services:
             dockerfile: Gateway/BarberShop.Gateway/Dockerfile
         networks:
             - services_network
+            - applications_network
         expose:
             - 8080
         ports:
@@ -32,7 +49,6 @@ services:
         container_name: catalog_api
         depends_on:
             - sqlserver
-            - gateway
         build:
             context: ../src/
             dockerfile: Services/Catalog/BarberShop.Services.Catalog.Api/Dockerfile
@@ -48,5 +64,7 @@ services:
             
 networks:
     services_network:
+        driver: "bridge"
+    applications_network:
         driver: "bridge"
         

@@ -16,6 +16,20 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/brands/{brandId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog_api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/brands/{brandId}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/product-types",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

@@ -1,5 +1,4 @@
 using BarberShop.Apps.Backoffice.Services.Catalog;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BarberShop.Apps.Backoffice
 {
@@ -15,9 +14,16 @@ namespace BarberShop.Apps.Backoffice
             // Add services
             builder.Services.AddHttpClient(nameof(CatalogService), (httpClient) =>
             {
-                // TODO: Add some validations.
-                httpClient.BaseAddress = new Uri(builder.Configuration.GetSection("Services:Catalog:BaseUrl").Value);
+                string? gatewayUrl = builder.Configuration.GetSection("Gateway:BaseUrl").Value;
+
+                if (string.IsNullOrWhiteSpace(gatewayUrl))
+                {
+                    throw new InvalidOperationException("The setting 'Gateway:BaseUrl' must be defined in the application configuration.");
+                }
+
+                httpClient.BaseAddress = new Uri(gatewayUrl);
             });
+
             builder.Services.AddScoped<CatalogService>();
 
             var app = builder.Build();
